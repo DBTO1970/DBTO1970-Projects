@@ -88,11 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			cards[optionTwoId].setAttribute('src','images/blank.png')
 			alert('Sorry, try again.')
 		}
+
 		cardsChosen = []
 		cardsChosenId = []
 		resultDisplay.textContent = cardsWon.length
-		if (cardsWon.length === cardsArray/2) {
-			resultDisplay.textContent = 'Congratulations!  You found them all!'
+		if (cardsWon.length === cardArray.length/2) {
+			resultDisplay.textContent = 'Congratulations!  You found them all!';
+			alert("Refresh Browser to play again", 3000)
 		}
 	}
 	
