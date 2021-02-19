@@ -21,6 +21,7 @@
    
     <!-- app.js javascript link within this directory -->
 	<script type="text/javascript" src="app.js"></script>
+   
 </head>
 
 <body>
@@ -29,15 +30,23 @@
         <h2>Find COVID-19 Vaccination Appointments</h2>
 		<h3>in Maryland</h3>
 		<hr/>
+        <!-- Get Current Date -->
+        <span id="date-time"></span>
+
+        <!-- Get Current Location -->
+        <span id="current-location"></span>
+
+        <!-- span to place data elements -->
         <p>Current Vaccination Phase: <span id="current-phase"></span></p>
         <p>Vaccination Sites in Maryland: <span id="current-sites"></span></p>
 
+        <input id="disclaimer-button" type="button" value="Disclaimer">
         <div id="disclaimer" name="disclaimer" title="Disclaimer">
 			<p>
-				Please Note: All information provided is as a service to the community.
+				Please Note: All information is provided as a service to the community.
 				This is NOT the official Maryland State Government Health Department Web Site. 
 				Please visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a>
-				for official Maryland State COVID-19 Vaccine Information
+				for official Maryland State COVID-19 Vaccine Information.
 			</p>
 		</div>
     </main>
