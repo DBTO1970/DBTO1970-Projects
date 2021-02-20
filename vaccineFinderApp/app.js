@@ -13,8 +13,6 @@ $(document).ready(function() {
     // function to show/hide disclaimer
     $("#disclaimer").hide();
     $("#disclaimer-button").click(function() {
-
-
-
-    });    
+        $('#disclaimer').show();
+        });    
 });
