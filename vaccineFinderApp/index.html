@@ -5,44 +5,47 @@
     <title>>Maryland COVID-19 Vaccine Finder</title>
     <!-- add url for favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico">
-    
-    <!-- jQuery UI style sheet reference.  -->
-     
-	<!-- Normal style sheet used for layout and general formatting. -->
-    <link href="main.css" type="text/css" rel="stylesheet">
-    
+       
     <!-- HTML5 shim/shiv for HTML5 section element backward compatibility. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="jquery.js" type="text/javascript"></script>
     <!-- jQuery UI JavaScript library reference. -->
-   
+   <script src="jquery-ui.min.js" type="text/javascript"></script>
     <!-- app.js javascript link within this directory -->
 	<script type="text/javascript" src="app.js"></script>
+   <!-- Normal style sheet used for layout and general formatting. -->
+   <link href="main.css" type="text/css" rel="stylesheet">
+   <!-- jQuery UI style sheet reference.  -->
+   <link href="jquery-ui.min.css" type="text/css" rel="stylesheet">
+   <link href="jquery-ui.theme.min.css" type="text/css" rel="stylesheet">
+   <link href="jquery-ui.structure.min.css" type="text/css" rel="stylesheet">
    
 </head>
 
 <body>
     <!-- Content Area -->
     <main>
-        <h2>Find COVID-19 Vaccination Appointments</h2>
-		<h3>in Maryland</h3>
+        <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
 		<hr/>
         <!-- Get Current Date -->
-        <span id="date-time"></span>
+        <span id="date-time" class="ui-widget-content"></span>
 
         <!-- Get Current Location -->
-        <span id="current-location"></span>
+        <span id="current-location" class="ui-widget-content"></span>
 
         <!-- span to place data elements -->
-        <p>Current Vaccination Phase: <span id="current-phase"></span></p>
-        <p>Vaccination Sites in Maryland: <span id="current-sites"></span></p>
+        <p class="ui-widget-content">Current COVID-19 Infection Rate in Maryland: <span id="current-roi"></span></p>
+        <p class="ui-widget-content">Current Vaccination Phase: <span id="current-phase"></span></p>
+        <p class="ui-widget-content">Vaccination Sites in Maryland: <span id="current-sites"></span></p>
 
         <input id="disclaimer-button" type="button" value="Disclaimer">
-        <div id="disclaimer" name="disclaimer" title="Disclaimer">
-			<p>
+        <div id="disclaimer" name="disclaimer" title="Disclaimer" class="ui-widget">
+			
+            
+            <p>
 				Please Note: All information is provided as a service to the community.
 				This is NOT the official Maryland State Government Health Department Web Site. 
 				Please visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a>
