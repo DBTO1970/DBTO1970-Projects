@@ -10,19 +10,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
-    <script src="jquery.js" type="text/javascript"></script>
+    <script src="jquery.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    
+    
     <!-- jQuery UI JavaScript library reference. -->
-   <script src="jquery-ui.min.js" type="text/javascript"></script>
-    <!-- app.js javascript link within this directory -->
-	<script type="text/javascript" src="app.js"></script>
-   <!-- Normal style sheet used for layout and general formatting. -->
-   <link href="main.css" type="text/css" rel="stylesheet">
-   <!-- jQuery UI style sheet reference.  -->
-   <link href="jquery-ui.min.css" type="text/css" rel="stylesheet">
-   <link href="jquery-ui.theme.min.css" type="text/css" rel="stylesheet">
-   <link href="jquery-ui.structure.min.css" type="text/css" rel="stylesheet">
+   <script src="jquery-ui.min.js"></script>
    
+   <!-- Normal style sheet used for layout and general formatting. -->
+   <link href="main.css" rel="stylesheet">
+   <!-- jQuery UI style sheet reference.  -->
+   <link href="jquery-ui.min.css" rel="stylesheet">
+   <link href="jquery-ui.theme.min.css" rel="stylesheet">
+   <link href="jquery-ui.structure.min.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -31,28 +32,29 @@
         <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
 		<hr/>
         <!-- Get Current Date -->
-        <span id="date-time" class="ui-widget-content"></span>
+        <p id="date-time" class="ui-widget-content"></p>
 
         <!-- Get Current Location -->
-        <span id="current-location" class="ui-widget-content"></span>
+        <p id="current-location" class="ui-widget-content"></p>
 
         <!-- span to place data elements -->
-        <p class="ui-widget-content">Current COVID-19 Infection Rate in Maryland: <span id="current-roi"></span></p>
-        <p class="ui-widget-content">Current Vaccination Phase: <span id="current-phase"></span></p>
+        <p class="ui-widget-content">Current COVID-19 Infections in Maryland: <span id="current-roi"></span></p>
+        <p class="ui-widget-content">Current Vaccination Phase: <span  id="current-phase"></span></p>
         <p class="ui-widget-content">Vaccination Sites in Maryland: <span id="current-sites"></span></p>
 
         <input id="disclaimer-button" type="button" value="Disclaimer">
         <div id="disclaimer" name="disclaimer" title="Disclaimer" class="ui-widget">
-			
-            
-            <p>
+			<p class="ui-widget-content">
 				Please Note: All information is provided as a service to the community.
 				This is NOT the official Maryland State Government Health Department Web Site. 
-				Please visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a>
+				Please visit <a class="ui-button" href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a>
 				for official Maryland State COVID-19 Vaccine Information.
 			</p>
 		</div>
+
     </main>
+    <!-- app.js javascript link within this directory -->
+	<script src="app.js"></script>
     <footer>&copy;2021 DonBarto.com</footer>
 </body>
 </html>
