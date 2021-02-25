@@ -42,50 +42,19 @@ $(document).ready(function(){
     
   // Get current location
 
-
-    // functions for json data
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json",
-    "features:attributes", 
-        function(data) {
-            $.each(data.features, function() {
-
-                $.each(this, function(key, value) {
-                
-                $("#current-sites").append(
-                        "<br />Name: " + value.name + "<br />" +
-                        "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br />");
-
-                    /*$(dataList).append(
-                        "Name: " + name + "<br />" +
-                        "eMail: " + email + "<br /><br />"
-                }*/
-                });
-            });
-
-            
-            /*var infRate = 0.0;
-            infRate = data.per_100k;
-            $("#current-roi").html(infRate);*/
-
-        
-
-            }, "jsonp");
-            $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    // Get Infection Data
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
             "features:attributes", 
                 function(data) {
-                    $(data.features.attributes, function() {
+                    $.get(data.features[-1], function(key, value) {
         
-                        $(this, function(key, value) {
-                        
-                        $("#current-roi").append(
-                                value.Statewide + "<br />");
+                           $("#current-roi").append(
+                            value.Statewide + "<br />");
+                            });
         
-                            /*$(dataList).append(
-                                "Name: " + name + "<br />" +
-                                "eMail: " + email + "<br /><br />"
-                        }*/
-                        });
-                    });
+                           
+                    
+                    }, "jsonp");
                     
                     
                     /*var infRate = 0.0;
@@ -94,6 +63,23 @@ $(document).ready(function(){
         
                 
         
-                    }, "jsonp");
+                    });
+
+    // functions for json data
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    "features:attributes", 
+        function(data) {
+            $.each(data.features, function() {
+
+                $.each(this, function(key, value) {
+               
+                $("#current-sites").append(
+                        "<br /><div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
+                        "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");
+                    
+                });
+ 
+            }, "jsonp");
+            
    
 });
