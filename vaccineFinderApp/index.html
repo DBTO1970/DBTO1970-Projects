@@ -35,7 +35,7 @@
         <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
 		<hr/>
         <!-- Get Current Date -->
-        <br /><p id="date-time" class="ui-widget"></p><br />
+        <br /><p id="date-time" class="ui-widget"></p>
 
         <!-- Get Current Location
         <p id="current-location" class="ui-widget-content"></p>
@@ -44,7 +44,13 @@
             <input type="text" title="Location" name="location" placeholder="City, County, or Zip"/>
             <input type="submit" value="Submit">
         </form> -->
-        <br /><div class="ui-widget">
+        <br />
+            <div id="dialog" class="ui-widget-content" name="disclaimer" title="Disclaimer">
+                <p>All information is provided as a free service to the community.</p>
+                <p>Visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a> for official State Health Department information. </p>
+            </div>
+            <button id="opener" class="ui-button" >Disclaimer</button>
+        <br /><br /><div class="ui-widget">
             <div class="ui-widget-content"><h4 class="ui-widget-header">Map of Maryland State Vaccination Locations</h4><br />
                 <p>Enter a location, address, or zip code to search your area</p>
                 <p>Click on the >> arrows at the top of the map for legend and filters</p><br /><br />
@@ -63,15 +69,7 @@
       async
     ></script>
     <div id="vaccine-sites-list"><span id="current-sites"></span></div>
-        <input id="disclaimer-button" type="button" value="Disclaimer">
-        <div id="disclaimer" name="disclaimer" title="Disclaimer" class="ui-widget">
-			<p class="ui-widget-content">
-				Please Note: All information is provided as a service to the community.
-				This is NOT the official Maryland State Government Health Department Web Site. 
-				Please visit <a class="ui-button" href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a>
-				for official Maryland State COVID-19 Vaccine Information.
-			</p>
-		</div>
+    
 
     </main>
     <!-- app.js javascript link within this directory -->
