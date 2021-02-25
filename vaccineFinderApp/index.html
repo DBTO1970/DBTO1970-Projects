@@ -35,18 +35,23 @@
         <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
 		<hr/>
         <!-- Get Current Date -->
-        <p id="date-time" class="ui-widget-content"></p>
+        <br /><p id="date-time" class="ui-widget"></p><br />
 
         <!-- Get Current Location
         <p id="current-location" class="ui-widget-content"></p> -->
-        <style>.embed-container {position: relative; padding-bottom: 520px; height: 0; max-width: 70%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 500px; height: 500px;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
+       <form>
+            <label for="location">Location:</label>
+            <input type="text" title="Location" name="location" placeholder="City, County, or Zip"/>
+            <input type="submit" value="Submit">
+        </form>
+        <br /><div class="ui-widget"><style>.embed-container {position: relative; padding-bottom: 520px; height: 0; max-width: 70%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 500px; height: 500px;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style>
         <div class="embed-container"><small><a href="//learngis4.maps.arcgis.com/apps/Embed/index.html?webmap=91b4e95372914bee9888960328f094d4&extent=-80.966,37.5829,-74.4895,39.8667&zoom=true&scale=true&search=true&searchextent=true&details=true&legend=true&active_panel=details&disable_scroll=true&theme=light" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br>
-            <iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="MDCovid19VaccinesStateWide" src="//learngis4.maps.arcgis.com/apps/Embed/index.html?webmap=91b4e95372914bee9888960328f094d4&extent=-80.966,37.5829,-74.4895,39.8667&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legend=true&active_panel=details&disable_scroll=true&theme=light"></iframe>
-        </div>
+            <iframe class="ui-widget-content" width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="MDCovid19VaccinesStateWide" src="//learngis4.maps.arcgis.com/apps/Embed/index.html?webmap=91b4e95372914bee9888960328f094d4&extent=-80.966,37.5829,-74.4895,39.8667&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legend=true&active_panel=details&disable_scroll=true&theme=light"></iframe>
+        </div></div>
         <!-- span to place data elements -->
-        <br /><p class="ui-widget-content">Current COVID-19 Infections in Maryland: <span id="current-roi"></span></p>
-        <p class="ui-widget-content">Current Vaccination Phase: <span  id="current-phase"></span></p>
-        <p class="ui-widget-content">Vaccination Sites in Maryland: </p>
+        <br /><br /><p class="ui-widget">Current COVID-19 Infections in Maryland: <span id="current-roi"></span></p>
+        <p class="ui-widget">Current Vaccination Phase: <span  id="current-phase"></span></p>
+        <p class="ui-widget">Vaccination Sites in Maryland: </p>
         <div id="map"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
