@@ -40,32 +40,54 @@ $(document).ready(function(){
     var today = new Date();
     makeDate(today);
     
-  // Get current location
+  // Get current location FROM GOOGLE
+  let map;
 
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 2,
+      center: new google.maps.LatLng(2.8, -187.3),
+      mapTypeId: "terrain",
+    });
+    // Create a <script> tag and set the USGS URL as the source.
+    const script = document.createElement("script");
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src =
+      "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  }
+  
+  // Loop through the results array and place a marker for each
+  // set of coordinates.
+  const eqfeed_callback = function (results) {
+    for (let i = 0; i < results.features.length; i++) {
+      const coords = results.features[i].geometry.coordinates;
+      const latLng = new google.maps.LatLng(coords[1], coords[0]);
+      new google.maps.Marker({
+        position: latLng,
+        map: map,
+      });
+    }
+  };
     // Get Infection Data
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
             "features:attributes", 
                 function(data) {
                     $.get(data.features[-1], function(key, value) {
+                        
         
                            $("#current-roi").append(
-                            value.Statewide + "<br />");
+                            value.Statewide + "<br /> As of: " + value.ReportDate + "<br />");
                             });
         
                            
                     
                     }, "jsonp");
-                    
-                    
-                    /*var infRate = 0.0;
-                    infRate = data.per_100k;
-                    $("#current-roi").html(infRate);*/
-        
-                
-        
+
                     });
 
-    // functions for json data
+    // functions for json vaccination site data
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", 
         function(data) {
@@ -74,12 +96,13 @@ $(document).ready(function(){
                 $.each(this, function(key, value) {
                
                 $("#current-sites").append(
-                        "<br /><div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
+                        "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
                         "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");
                     
                 });
+            
  
             }, "jsonp");
             
    
-});
+}); // end ready function
