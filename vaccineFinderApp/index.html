@@ -54,6 +54,7 @@
         <button id="opener" class="ui-button" >Disclaimer</button>
         <br /><br />
         <!-- Google Map Element -->
+        <div class="row"><input class="form-control" id="search" type="text" placeholder="Search..."/></div>
         <div id="map"></div><br />
        
         
@@ -108,7 +109,9 @@
     
     <!-- script and url for google maps API -->
     <script src="maps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap" async defer ></script>
+    
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap&libraries=places" async defer ></script>
     
 </body>
 </html>

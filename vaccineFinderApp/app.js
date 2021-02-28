@@ -60,7 +60,7 @@ $(document).ready(function(){
     
   // Add google map and GeoJSON data
   
-   
+    
 
   
   
