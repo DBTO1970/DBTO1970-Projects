@@ -58,8 +58,12 @@ $(document).ready(function(){
     var today = new Date();
     makeDate(today);
     
-  // Get current location FROM GOOGLE
- 
+  // Add google map and GeoJSON data
+  
+   
+
+  
+  
   // Accordion function on accordion div
     
     $("#accordion").accordion({

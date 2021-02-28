@@ -25,8 +25,7 @@
    <link href="jquery-ui.structure.min.css" rel="stylesheet">
    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
-    <!-- app.js javascript link within this directory -->
-    <script src="app.js"></script>
+    
     
     
 </head>
@@ -54,12 +53,15 @@
         </div>
         <button id="opener" class="ui-button" >Disclaimer</button>
         <br /><br />
+        <!-- Google Map Element -->
+        <div id="map"></div><br />
+       
+        
+            
+<!-- span to place data elements -->
         <div class="ui-widget">
-            
-            <!-- span to place data elements -->
-            <br />
-            
-    
+        <br />
+ 
             <div id="accordion" class="ui-accordion" width="80%" height="500px">
                 
                 <h3 class="ui-accordion-header">Maryland Covid-19 Vaccination Clinics</h3>
@@ -96,10 +98,17 @@
             </div><br />
             
     
-
+            
     </main>
     
 	
     <footer>&copy;2021 DonBarto.com</footer>
+    <!-- app.js javascript link within this directory -->
+    <script src="app.js"></script>
+    
+    <!-- script and url for google maps API -->
+    <script src="maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap" async defer ></script>
+    
 </body>
 </html>
