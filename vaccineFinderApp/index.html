@@ -15,21 +15,17 @@
     
     
     <!-- jQuery UI JavaScript library reference. -->
-   <script src="jquery-ui.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
    
-   <!-- Normal style sheet used for layout and general formatting. -->
-   <link href="main.css" rel="stylesheet">
-   <!-- jQuery UI style sheet reference.  -->
-   <link href="jquery-ui.min.css" rel="stylesheet">
-   <link href="jquery-ui.theme.min.css" rel="stylesheet">
-   <link href="jquery-ui.structure.min.css" rel="stylesheet">
-   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- Normal style sheet used for layout and general formatting. -->
+    <link href="main.css" rel="stylesheet">
+    <!-- jQuery UI style sheet reference.  -->
+    <link href="jquery-ui.min.css" rel="stylesheet">
+    <link href="jquery-ui.theme.min.css" rel="stylesheet">
+    <link href="jquery-ui.structure.min.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
-    
-    
-    
 </head>
-
 <body>
     <!-- Content Area -->
     <main>
@@ -40,69 +36,50 @@
             <p class="ui-widget">Current COVID-19 Infections in Maryland: <span id="current-roi"></span></p>
             <p class="ui-widget">Current Vaccination Phase: <span  id="current-phase"></span></p><br />
         </div>
-        <!-- Get Current Location
-        <p id="current-location" class="ui-widget-content"></p>
-       <form>
-            <label for="location">Location:</label>
-            <input type="text" title="Location" name="location" placeholder="City, County, or Zip"/>
-            <input type="submit" value="Submit">
-        </form> -->
+        
         <div id="dialog" class="ui-widget" name="disclaimer" title="Disclaimer">
             <p class="ui-widget-content">All information is provided as a free service to the community.<br />
             Visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a> for official State Health Department information. </p>
         </div>
         <button id="opener" class="ui-button" >Disclaimer</button>
         <br /><br />
-        <!-- Google Map Element -->
-        <div class="row"><input class="form-control" id="search" type="text" placeholder="Search..."/></div>
-        <div id="map"></div><br />
        
         
             
-<!-- span to place data elements -->
-        <div class="ui-widget">
+    <!-- span to place data and map elements -->
+       
         <br />
  
             <div id="accordion" class="ui-accordion" width="80%" height="500px">
-                
                 <h3 class="ui-accordion-header">Maryland Covid-19 Vaccination Clinics</h3>
-                    <div class="ui-accordion-content">
-                        <div><h4 class="ui-widget-header">Map of Maryland State Vaccination Locations</h4><br />
-                            <p>Enter a location, address, or zip code to search your area</p>
-                            <p>Click on the >> arrows at the top of the map for legend and filters</p>
-                        </div>
-                    <style>
-                        .embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}
-                    </style>
-                    <div class="embed-container"><small><a href="//learn-students.maps.arcgis.com/apps/Embed/index.html?webmap=6f1189c16dee45a8ad7d596029c5d92b&extent=-80.1772,37.7091,-71.8056,39.989&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&disable_scroll=true&theme=light" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small>
-                    <br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Maryland Covid-19 Vaccination Clinics" src="//learn-students.maps.arcgis.com/apps/Embed/index.html?webmap=6f1189c16dee45a8ad7d596029c5d92b&extent=-80.1772,37.7091,-71.8056,39.989&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&disable_scroll=true&theme=light">
-                    </iframe></div>
+                <div class="ui-accordion-content">
+                    <h4 class="ui-widget-header">Map of Maryland State Vaccination Locations</h4><br />
+                        
+                    
+                                <!-- Google Map Element -->
+                    <div class="row"><input class="form-control" id="searchSites" type="text" placeholder="Search locations"/></div><br />
+                    <div id="map"></div><br />
                     <h3 class="ui-widget-header">Vaccination Sites in Maryland: </h3>
-               
-    <br /><div id="vaccine-sites-list"><span id="current-sites"></span></div>
-                    </div>
-                
-                <h3 class="ui-accordion-header">Infection and Vaccine Administration in Maryland</h3>
-                    <div class="ui-accordion-content">
-                        <div><h4>Map of Maryland Showing Infections and Vaccination rates</h4><br />
-                            <p>Enter a location, address, or zip code to search a specific area</p>
-                            <p>Click on the >> arrows at the top of the map for legend and filters</p>
-                        </div>
-                        <style>
-                            .embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}
-                        </style>
-                        <div class="embed-container">
-                        <small><a href="//learngis4.maps.arcgis.com/apps/Embed/index.html?webmap=91b4e95372914bee9888960328f094d4&extent=-79.9997,37.7459,-74.8416,39.9826&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br>
-                        <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="MDCovid19VaccinesStateWide" src="//learngis4.maps.arcgis.com/apps/Embed/index.html?webmap=91b4e95372914bee9888960328f094d4&extent=-79.9997,37.7459,-74.8416,39.9826&home=true&zoom=true&previewImage=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light">
-                        </iframe></div>
-                    </div>
-            </div><br />
+                    <br />
+                    <div id="vaccine-sites-list"><span id="current-sites"></span></div>
+       
+                </div>
+
+                <h3 class="ui-accordion-header">Vaccines Administered in Maryland</h3>
+                <div class="ui-accordion-content">
+                    <h4>Map of Maryland Showing Vaccination rates</h4><br />
+                        
+                    
+                                <!-- Google Map Element -->
+                    <div class="row"><input class="form-control" id="searchData" type="text" placeholder="Search area data"/></div><br />
+                    <div id="map2"></div><br />
+                    
+                </div>
             
-    
-            
+            </div>
+        
+        <br />
     </main>
-    
-	
     <footer>&copy;2021 DonBarto.com</footer>
     <!-- app.js javascript link within this directory -->
     <script src="app.js"></script>
@@ -112,6 +89,7 @@
     
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap&libraries=places" async defer ></script>
+    
     
 </body>
 </html>

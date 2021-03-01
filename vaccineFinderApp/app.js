@@ -98,7 +98,7 @@ $(document).ready(function(){
             $.each(data.features, function() {
 
                 $.each(this, function(key, value) {
-               
+               // iterate over json data and pull required data
                 $("#current-sites").append(
                         "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
                         "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");

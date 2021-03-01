@@ -3,7 +3,7 @@
     function initMap() {
         var options = {
             center: {lat: 39.0458, lng: -76.6413},
-            zoom: 10,
+            zoom: 8,
             
         };
 
@@ -33,45 +33,46 @@
             infoWindow.setContent(content);
             infoWindow.open(map);
         }
-        var searchBox;
-
-        var input = document.getElementById('search');
-        var searchBox = new google.maps.places.searchBox(input);
-
-        map.addListenter('bounds_changed', function() {
-            searchBox.setBounds(mapt.getBounds());
-        });
-
-        var markers = [];
-
-        searchBox.addListenter('places_changed', function() {
-            var places = searchBox.getPlaces();
-
-            if (places.length === 0) 
-                return;
-            markers.forEach(function(m) { m.setMap(null); });
-            markers = [];
-
-            var bounds = new google.maps.LatLngBounds();
-
-            places.forEach(function (p) {
-                if (!p.geometry)
-                    return;
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    title: p.name,
-                    position: p.geometry.location
-                }));
-
-                if (p.geometyr.viewport)
-                    bounds.union(p.geometry.viewport);
-                else
-                    bounds.extend(p.geometry.location);
-
-            });
-            map.fitBounds(bounds);
-        });
+        initMap2();
     } // end initMap function
+
+    var map2;
+    var infoWindow2;
+    function initMap2() {
+        var options = {
+            center: {lat: 39.0458, lng: -76.6413},
+            zoom: 8,
+            
+        };
+
+        map2 = new google.maps.Map(document.getElementById('map2'), options);
+        infoWindow2 = new google.maps.InfoWindow;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(p){
+                var position = {
+                    lat: p.coords.latitude,
+                    lng: p.coords.longitude
+                };
+                infoWindow2.setPosition(position);
+                infoWindow2.setContent('Your Location!');
+                infoWindow2.open(map2);
+
+            }, function() {
+                handleLocationError('Geolocation service failed', map2.center());
+            })
+
+        } else {
+            handleLocationError('No Geolocation Available', map2.center());
+
+        }
+        function handleLocationError (content, position) {
+            infoWindow2.setPosition(position);
+            infoWindow2.setContent(content);
+            infoWindow2.open(map2);
+        }
+        
+    } // end initMap2 function
 
     
 
