@@ -32,23 +32,15 @@
         <div class="ui-widget" id="dashboardHeader">
             <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
            <!-- Get Current Date -->
-            <br /><p id="date-time" class="ui-widget"></p>
-            <p class="ui-widget">Current COVID-19 Infections in Maryland: <span id="current-roi"></span></p>
-            <p class="ui-widget">Current Vaccination Phase: <span  id="current-phase"></span></p><br />
+            <h3 id="date-time" class="ui-widget"></h3>
+            <!-- current infections statewide -->
+            <p class="ui-widget">COVID-19 Vaccinations administered in Maryland: <span id="current-vacTotal"></span></p>
+            <!-- current vaccination phase for state -->
+            <p class="ui-widget">Current Vaccination Phase: <span  id="current-phase"><a href="https://coronavirus.maryland.gov/pages/vaccine" target="_blank">1C</a></span></p><br />
         </div>
-        
-        <div id="dialog" class="ui-widget" name="disclaimer" title="Disclaimer">
-            <p class="ui-widget-content">All information is provided as a free service to the community.<br />
-            Visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a> for official State Health Department information. </p>
-        </div>
-        <button id="opener" class="ui-button" >Disclaimer</button>
-        <br /><br />
-       
-        
-            
     <!-- span to place data and map elements -->
        
-        <br />
+      
  
             <div id="accordion" class="ui-accordion" width="80%" height="500px">
                 <h3 class="ui-accordion-header">Maryland Covid-19 Vaccination Clinics</h3>
@@ -61,13 +53,13 @@
                     <div id="map"></div><br />
                     <h3 class="ui-widget-header">Vaccination Sites in Maryland: </h3>
                     <br />
-                    <div id="vaccine-sites-list"><span id="current-sites"></span></div>
+                    <div id="vaccine-sites-list"></div>
        
                 </div>
 
                 <h3 class="ui-accordion-header">Vaccines Administered in Maryland</h3>
                 <div class="ui-accordion-content">
-                    <h4>Map of Maryland Showing Vaccination rates</h4><br />
+                    <h4 class="ui-widget-header">Map of Maryland Showing Vaccination rates</h4><br />
                         
                     
                                 <!-- Google Map Element -->
@@ -79,6 +71,12 @@
             </div>
         
         <br />
+        <div id="dialog" class="ui-widget" name="disclaimer" title="Disclaimer">
+            <p class="ui-widget-content">All information is provided as a free service to the community.<br />
+            Visit <a href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">Maryland.gov COVIDLink</a> for official State Health Department information. </p>
+        </div>
+        <button id="opener" class="ui-button" >Disclaimer</button>
+        <br />
     </main>
     <footer>&copy;2021 DonBarto.com</footer>
     <!-- app.js javascript link within this directory -->
@@ -88,7 +86,7 @@
     <script src="maps.js"></script>
     
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap&libraries=places" async defer ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNNzaaRSv2zHibuZYPr-VmDnx8BSHsong&callback=initMap&libraries=places, geometry, localContext, visualizations" async defer ></script>
     
     
 </body>

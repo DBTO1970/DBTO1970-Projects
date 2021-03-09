@@ -21,3 +21,8 @@ main{
     
     height: 500px;
 }
+
+#current-phase  {
+    font-size: 1.25em;
+    font-weight: 900;
+}
