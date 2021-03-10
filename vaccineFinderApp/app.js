@@ -97,22 +97,30 @@ $(document).ready(function(){
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", 
         function(data) {
+            
             $.each(data.features, function() {
+                
 
                 $.each(this, function(key, value) {
-               // iterate over json data and pull required data
-                $("#current-sites").append(
-                        "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
-                        "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");
+               // iterate over json data and pull required records
+                var nothingArr = [undefined,"",null];
+                
+                if (nothingArr.indexOf(value.name) !== -1 && nothingArr.indexOf(value.website_url) !== -1) {
                     
-                });
-            });
-            
+                    } else {
+                        $("#vaccine-sites-list").append(
+                            "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
+                            "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");
+                    }
+                            });
+                        
+                        });
+                
  
             }, "jsonp");
           
     // get vaccination totals
-   /* $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,CumulativeTotalVaccinated,CumulativeTotalVaccinatedDate&outSR=4326&f=json",
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,CumulativeTotalVaccinated,CumulativeTotalVaccinatedDate&outSR=4326&f=json",
     "features:attributes",
         function(data) {
             var totalToday = 0;
@@ -122,10 +130,10 @@ $(document).ready(function(){
             
             });
             $("#current-vacTotal").html(totalToday);
-        }, "jsonp");*/
+        }, "jsonp");
         
         // ALTERNATIVE functions for json vaccination site data
-        $.getJSON('https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json')
+     /*()   $.getJSON('https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json')
         //.then(res => get.JSON())
         .then(data =>
             data.features.filter(({
@@ -136,7 +144,7 @@ $(document).ready(function(){
             }) => {
                     return '<div id="vaccine-sites-list">><br />Name: ${attributes.name}<br />Website: <a href="${attributes.website_url}" target="_blank">${attributes.website_url}</a></>';
                 }))
-        .then(html => console.log(html.join("\n")));
+        .then(html => console.log(html.join("\n")));*/
         
    
 });
