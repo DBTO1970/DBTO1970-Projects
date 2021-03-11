@@ -94,8 +94,8 @@ $(document).ready(function(){
                     }, "jsonp");*/
     
                 
-// functions for json vaccination site data
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/3/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/4/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", 
         function(data) {
             
@@ -111,7 +111,9 @@ $(document).ready(function(){
                     } else {
                         $("#vaccine-sites-list").append(
                             "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
-                            "Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a></div>");
+                            "Address: " + value.fulladdr + "<br />" + "Type: " + value.site_type + "<br />" +
+                            "Scheduling Website: <a href='" + value.schedule_url + "' target='_blank'>" + value.schedule_url + "</a><br />"+
+                            "Business Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br /><hr/></div>");
                     }
                             });
                         
@@ -124,13 +126,11 @@ $(document).ready(function(){
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,CumulativeTotalVaccinated,CumulativeTotalVaccinatedDate&outSR=4326&f=json",
     "features:attributes", function(data) {
         let todayTotalArr = data.features;
-        console.log(todayTotalArr);
         var indexPoint = todayTotalArr.length - 1;
         var newData = todayTotalArr[indexPoint];
-        console.log(newData);
         let newDataToday = newData.attributes.CumulativeTotalVaccinated;
         $("#current-vacTotal").html(newDataToday.toLocaleString('en-US'));
-        console.log(newDataToday);
+        
 
     }, "jsonp");
    
