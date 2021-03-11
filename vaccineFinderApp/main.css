@@ -26,3 +26,51 @@ main{
     font-size: 1.25em;
     font-weight: 900;
 }
+
+.increase   {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.decrease   {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.stable   {
+    background-color: yellow;
+    color: darkgray;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.infInc   {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.infDec   {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.infStable   {
+    background-color: yellow;
+    color: darkgray;
+    padding: 5px;
+    border-radius: 10%;
+    margin: 5px;
+}

@@ -79,22 +79,8 @@ $(document).ready(function(){
     // Setter
     $("#accordion").accordion("option", "collapsible", true);
     $("#accordion").accordion("option", "active", false);
-  
-  
 
-    // Get Infection Data
-   /* $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json", "features:attributes", 
-                function(data) {
-                    $.get(data.features[-1], function(key, value) {
-                        
-        
-                           $("#current-roi").append(
-                            value.Statewide + "<br /> As of: " + value.ReportDate + "<br />");
-                            });
-                    }, "jsonp");*/
-    
-                
-
+// Vaccine Site Data
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/4/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", 
         function(data) {
@@ -118,22 +104,58 @@ $(document).ready(function(){
                             });
                         
                         });
-                
- 
             }, "jsonp");
           
     // get vaccination totals
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,CumulativeTotalVaccinated,CumulativeTotalVaccinatedDate&outSR=4326&f=json",
     "features:attributes", function(data) {
         let todayTotalArr = data.features;
-        var indexPoint = todayTotalArr.length - 1;
-        var newData = todayTotalArr[indexPoint];
+        let indexPoint = todayTotalArr.length - 1;
+        let prevIndexPoint = todayTotalArr.length - 2;
+        let prevData = todayTotalArr[prevIndexPoint];
+        let newData = todayTotalArr[indexPoint];
         let newDataToday = newData.attributes.CumulativeTotalVaccinated;
-        $("#current-vacTotal").html(newDataToday.toLocaleString('en-US'));
+        let prevDataToday = prevData.attributes.CumulativeTotalVaccinated;
+        
+        if (prevDataToday < newDataToday) {
+            $('#current-vacTotal').addClass('increase');
+
+
+        } else if (prevDataToday > newDataToday) {
+            $('#current-vacTotal').addClass('decrease');
+
+        } else {
+            $('#current-vacTotal').addClass('stable');
+        }
+        let percentVax = (newDataToday / 6060000) * 100;
+        $("#current-vacTotal").html(newDataToday.toLocaleString('en-US') + "  (" + percentVax.toLocaleString('en-US') + "%)");
         
 
     }, "jsonp");
    
+    // Get infection totals
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_TotalCasesStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    "features:attributes", function(data) {
+        let todayTotalCasesArr = data.features;
+        let indexPointCases = todayTotalCasesArr.length - 1;
+        let prevIndexPointCases = todayTotalCasesArr.length -2;
+        let newCasesData = todayTotalCasesArr[indexPointCases];
+        let prevNewCasesData = todayTotalCasesArr[prevIndexPointCases];
+        let newCasesDataToday = newCasesData.attributes.Count_;
+        let prevCasesToday = prevNewCasesData.attributes.Count_;
+        let infectionRate = (newCasesDataToday / 6060000) * 100;
+        if (prevCasesToday < newCasesDataToday) {
+            $('#current-caseTotal').addClass('infInc');
+
+
+        } else if (prevCasesToday > newCasesDataToday) {
+            $('#current-caseTotal').addClass('infDec');
+
+        } else {
+            $('#current-caseTotal').addClass('infStable');
+        }
+        $("#current-caseTotal").html(newCasesDataToday.toLocaleString('en-US') + "  (" + infectionRate.toLocaleString('en-US') + "%)");
+    }, "jsonp");
    
     
 

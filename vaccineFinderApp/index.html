@@ -5,7 +5,8 @@
     <title>Maryland COVID-19 Vaccine Finder</title>
     <!-- add url for favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico">
-       
+    <!-- polyfill for map visualizations -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- HTML5 shim/shiv for HTML5 section element backward compatibility. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     
@@ -34,8 +35,10 @@
            <!-- Get Current Date -->
             <h3 id="date-time" class="ui-widget"></h3>
             <!-- current infections statewide -->
-            <p class="ui-widget">COVID-19 Vaccinations administered in Maryland: <span id="current-vacTotal" style="font-weight: 800;"></span>*</p>
-            <p style="color: red; font-size: x-small;">*Updated Weekly by Maryland.gov COVIDLink</p>
+            <p class="ui-widget">COVID-19 Vaccinations administered in Maryland: <span id="current-vacTotal" style="font-weight: 700;"></span><span style="color: red">*</span></p>
+            
+            <p class="ui-widget">COVID-19 cases in Maryland: <span id="current-caseTotal" style="font-weight: 700;"></span><span id="infChange"></span></p>
+            <p style="color: red; font-size: x-small;">*Updated via Maryland.gov COVIDLink</p>
             <!-- current vaccination phase for state -->
             <h6 class="ui-widget">Current Vaccination Phase: <span  id="current-phase"><a href="https://coronavirus.maryland.gov/pages/vaccine" target="_blank">1C</a></span></h6><br />
         </div>
@@ -44,7 +47,7 @@
       
  
             <div id="accordion" class="ui-accordion" width="80%" height="500px">
-                <h3 class="ui-accordion-header">Maryland Covid-19 Vaccination Clinics</h3>
+                <h3 class="ui-accordion-header">Maryland COVID-19 Vaccination Clinics</h3>
                 <div class="ui-accordion-content">
                     <h4 class="ui-widget-header">Map of Maryland State Vaccination Locations</h4><br />
                         
