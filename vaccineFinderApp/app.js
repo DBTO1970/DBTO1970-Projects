@@ -99,7 +99,7 @@ $(document).ready(function(){
                             "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
                             "Address: " + value.fulladdr + "<br />" + "Type: " + value.site_type + "<br />" +
                             "Scheduling Website: <a href='" + value.schedule_url + "' target='_blank'>" + value.schedule_url + "</a><br />"+
-                            "Business Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br /><hr/></div>");
+                            "Main Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br /><hr/></div>");
                     }
                             });
                         

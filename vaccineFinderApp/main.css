@@ -17,7 +17,7 @@ main{
   line-height: 1.5em
 }
 
-#map, #map2    {
+#map, #map2, #vaccine-sites-list    {
     
     height: 500px;
 }
@@ -74,3 +74,4 @@ main{
     border-radius: 10%;
     margin: 5px;
 }
+
