@@ -45,7 +45,7 @@ main{
 
 .stable   {
     background-color: yellow;
-    color: darkgray;
+    color: black;
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
@@ -69,7 +69,7 @@ main{
 
 .infStable   {
     background-color: yellow;
-    color: darkgray;
+    color: black;
     padding: 5px;
     border-radius: 5px;
     margin: 5px;

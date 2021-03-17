@@ -70,6 +70,9 @@ $(document).ready(function(){
     $("#accordion").accordion({
       
     });
+    $("#accordionData").accordion({
+      
+    });
   
     
     // Getter
@@ -77,8 +80,16 @@ $(document).ready(function(){
     var active = $("#accordion").accordion("option", "active");
     
     // Setter
-    $("#accordion").accordion("option", "collapsible", true);
-    $("#accordion").accordion("option", "active", false);
+    $("#accordionData").accordion("option", "collapsible", true);
+    $("#accordionData").accordion("option", "active", false);
+
+     // Getter
+     var collapsible = $("#accordionData").accordion("option", "collapsible");
+     var active = $("#accordionData").accordion("option", "active");
+     
+     // Setter
+     $("#accordion").accordion("option", "collapsible", true);
+     $("#accordion").accordion("option", "active", false);
 
 // Vaccine Site Data
     $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/4/query?where=1%3D1&outFields=*&outSR=4326&f=json",
