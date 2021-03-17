@@ -60,11 +60,9 @@ $(document).ready(function(){
     makeDate(today);
     
   // Add google map and GeoJSON data
-  
-    
-
-  
-  
+    // see maps.js
+ //
+ 
   // Accordion function on accordion div
     
     $("#accordion").accordion({

@@ -3,6 +3,10 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+
     <title>Maryland COVID-19 Vaccine Finder</title>
     <!-- add url for favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico">
@@ -42,20 +46,17 @@
         </div>
         <div class="ui-widget" id="mainContent">
             <h3 class="ui-widget-header">Vaccine and Case Data</h3>
-            <div id="accordionData" class="ui-accordion" width="80%" height="500px">
+            <div id="accordionData" class="ui-accordion" width="80%">
                 <!-- current infections statewide -->
-                    <h3 class="ui-accordion-header">COVID-19 Vaccinations administered in Maryland: 
+                    <h3 class="ui-accordion-header">COVID-19 Vaccinations administered: 
                         <span id="current-vacTotal" style="font-weight: 700;"></span>
                         <span style="color: red">*</span>
                     </h3>
                     <div class="ui-accordion-content">
-                        <p>This number represents the total number of vaccinations administered in Maryland.  It includes First Dose, Second Dose, Fully Vaccinated totals for the State of Maryland. The Percent(%) is based on a total state population of 6.06 Million people.</p><br />
-                        <p>A <span style="color: white; background-color: green; border-radius:5px; padding: .04em;">Green</span>
-                             indicator shows an increase in doses administered from the previous day's data.  A 
-                             <span style="color: white; background-color: red; border-radius:5px; padding: .04em;">Red</span>
-                              indicator shows a decrease, while a <span style="color: black; background-color: YELLOW; 
-                              border-radius:5px; padding: .04em;">Yellow</span>
-                             indicator shows no change from the previous data set.</p>
+                        <p>This number represents the total number of vaccinations administered in Maryland.  It includes First Dose, Second Dose, Fully Vaccinated totals for the State of Maryland. The Percent ( % ) is based on a total state population of 6.06 Million people.</p><br />
+                        <p>A&nbsp;<span style="color: white; background-color: green; border-radius:5px; padding: .04em;">&nbsp;Green&nbsp;</span>&nbsp;indicator shows an increase in doses administered from the previous day's data.  A&nbsp;<span style="color: white; background-color: red; border-radius:5px; padding: .04em;">&nbsp;Red&nbsp;</span>
+                              &nbsp;indicator shows a decrease, while a&nbsp;<span style="color: black; background-color: YELLOW; 
+                              border-radius:5px; padding: .04em;">&nbsp;Yellow&nbsp;</span>&nbsp;indicator shows no change from the previous data set.</p>
                         <br />
                         <p style="color: red; 
                         font-size: x-small;"><a style="color: red; font-size: x-small;" 
@@ -63,15 +64,15 @@
                         </p>    
                     
                     </div>
-                    <h3 class="ui-accordion-header">COVID-19 cases in Maryland (Statewide, per 100K people): <span id="current-caseTotal" style="font-weight: 700;"></span><span id="infChange"></span><span style="color: red"> *</span></h3>
+                    <h3 class="ui-accordion-header">COVID-19 cases (Statewide, per 100K people): <span id="current-caseTotal" style="font-weight: 700;"></span><span id="infChange"></span><span style="color: red"> *</span></h3>
                     <div class="ui-accordion-content">
                         <p>This number represents the total number of current COVID-19 cases in Maryland.  The number is represented as a 7-day average per 100K.</p><br />
                         
-                        <p>A <span style="color: white; background-color: green; border-radius:5px; padding: .04em;">Green</span> 
+                        <p>A&nbsp;<span style="color: white; background-color: green; border-radius:5px; padding: .04em;">&nbsp;Green&nbsp;</span>&nbsp;
                             indicator shows a decrease in total current cases, state-wide, from the previous day's data.  A 
-                            <span style="color: white; background-color: red; border-radius:5px; padding: .04em;">Red</span> 
-                            indicator shows an increase, while <span style="color: black; 
-                            background-color: YELLOW; border-radius:5px; padding: .04em;">Yellow</span> 
+                            &nbsp;<span style="color: white; background-color: red; border-radius:5px; padding: .04em;">&nbsp;Red&nbsp;</span>&nbsp;
+                            indicator shows an increase, while a&nbsp;<span style="color: black; 
+                            background-color: YELLOW; border-radius:5px; padding: .04em;">&nbsp;Yellow&nbsp;</span>&nbsp;
                             indicator shows no change from the previous data set.
                         </p>
                         <br />
@@ -90,9 +91,9 @@
     <!-- span to place data and map elements -->
         <h3 class="ui-widget-header">Vaccination Locations and Resources</h3>
        
-            <div id="accordion" class="ui-accordion" width="80%" height="500px">
+            <div id="accordion" class="ui-accordion" width="80%" height="auto">
                 <h3 class="ui-accordion-header">List View of Vaccine Administration Sites</h3>
-                <div class="ui-accordion-content" height="500px">
+                <div class="ui-accordion-content">
                     <div id="vaccine-sites-list"></div>
                 </div>
                 <h3 class="ui-accordion-header">Map of Maryland State Vaccination Locations</h3>

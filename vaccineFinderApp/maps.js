@@ -39,7 +39,7 @@
     // Create script tag and set site data as source
 
     const script = document.createElement('script');
-    script.src = 'https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson';
+    script.src = ('https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson');
     document.getElementsByTagName('head') [0].appendChild(script);
 
     // Loop through results array from vaccine site GeoJson and place marker for each set of coords
