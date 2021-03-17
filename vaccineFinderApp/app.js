@@ -134,16 +134,16 @@ $(document).ready(function(){
     }, "jsonp");
    
     // Get infection totals
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_TotalCasesStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", function(data) {
         let todayTotalCasesArr = data.features;
         let indexPointCases = todayTotalCasesArr.length - 1;
         let prevIndexPointCases = todayTotalCasesArr.length -2;
         let newCasesData = todayTotalCasesArr[indexPointCases];
         let prevNewCasesData = todayTotalCasesArr[prevIndexPointCases];
-        let newCasesDataToday = newCasesData.attributes.Count_;
-        let prevCasesToday = prevNewCasesData.attributes.Count_;
-        let infectionRate = (newCasesDataToday / 6060000) * 100;
+        let newCasesDataToday = (newCasesData.attributes.Statewide);
+        let prevCasesToday = (prevNewCasesData.attributes.Statewide);
+        //let infectionRate = (newCasesDataToday / 6060000) * 100;
         if (prevCasesToday < newCasesDataToday) {
             $('#current-caseTotal').addClass('infInc');
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
         } else {
             $('#current-caseTotal').addClass('infStable');
         }
-        $("#current-caseTotal").html(newCasesDataToday.toLocaleString('en-US') + "  (" + infectionRate.toLocaleString('en-US') + "%)");
+        $("#current-caseTotal").html(newCasesDataToday.toLocaleString('en-US'));
     }, "jsonp");
    
     
