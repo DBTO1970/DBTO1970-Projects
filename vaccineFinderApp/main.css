@@ -10,18 +10,27 @@ footer  {
 
 main{
     padding: 10px;
-    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10px;
+    width: 85%;
 }      
 
 #dashboardHeader  {
   line-height: 1.5em
 }
 
-#map, #map2, #vaccine-sites-list    {
-    
+.dataMap, #map, #map2 {
     height: 500px;
 }
 
+.dataList   {
+    height: 500px;
+}
+
+.dataDef    {
+    height: 200px;
+}
 #current-phase  {
     font-size: 1.25em;
     font-weight: 900;
@@ -73,5 +82,10 @@ main{
     padding: 5px;
     border-radius: 5px;
     margin: 5px;
+}
+
+.ui-widget-header   {
+    padding: 5px;
+    text-align: center;
 }
 

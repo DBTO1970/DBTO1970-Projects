@@ -90,8 +90,8 @@ $(document).ready(function(){
      $("#accordion").accordion("option", "active", false);
 
 // Vaccine Site Data
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/4/query?where=1%3D1&outFields=*&outSR=4326&f=json",
-    "features:attributes", 
+    $.getJSON("https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson",
+    "features:", 
         function(data) {
             
             $.each(data.features, function() {
@@ -101,18 +101,29 @@ $(document).ready(function(){
                // iterate over json data and pull required records
                 var nothingArr = [undefined,"",null];
                 
+                
                 if (nothingArr.indexOf(value.name) !== -1 && nothingArr.indexOf(value.website_url) !== -1) {
                     
                     } else {
+                        
+                        
                         $("#vaccine-sites-list").append(
                             "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
                             "Address: " + value.fulladdr + "<br />" + "Type: " + value.site_type + "<br />" +
                             "Scheduling Website: <a href='" + value.schedule_url + "' target='_blank'>" + value.schedule_url + "</a><br />"+
                             "Main Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br /><hr/></div>");
-                    }
+                            
+                        } 
+                       
+                    
+                            
+
                             });
                         
                         });
+
+                        
+                        
             }, "jsonp");
           
     // get vaccination totals
