@@ -44,6 +44,7 @@
 	background: #cc0000 url("images/ui-bg_highlight-soft_15_cc0000_1x100.png") 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
+	text-align: center;
 }
 .ui-widget-header a {
 	color: #ffffff;
