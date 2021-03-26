@@ -39,20 +39,26 @@
     // Create script tag and set site data as source
 
     const script = document.createElement('script');
-    script.src = 'https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson';
+    script.src = ('https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson');
     document.getElementsByTagName('head') [0].appendChild(script);
 
     // Loop through results array from vaccine site GeoJson and place marker for each set of coords
-    const vaxfeed_callback = function(results) {
+    
+    $.getJSON("https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson",
+    function(results) {
         for (let i = 0; i < results.features.length; i++) {
             const coords = results.features[i].geometry.coordinates;
             const latLng = new google.maps.LatLng(coords[1], coords[0]);
+            const markerInfo = results.features[i].attributes;
             new google.maps.Marker({
                 position: latLng,
                 map: map,
+                infoWindow: infoWindow,
+                marker: markerInfo,
+                
             });
         }
-    };
+    }, "jsonp");
 
     let map2;
     let infoWindow2;
@@ -91,5 +97,23 @@
         }
         
     }; // end initMap2 function
+
+    // Get GeoJSON data for vaccinations administered and cases
+    
+    $.getJSON("https://opendata.arcgis.com/datasets/04d60ba645b34c3b92eae5d6fa70b69b_0.geojson",
+    function(results) {
+        for (let i = 0; i < results.features.length; i++) {
+            
+            
+            
+            new google.maps.Marker({
+                
+                map: map2,
+                infoWindow: infoWindow2,
+                
+                
+            });
+        }
+    }, "jsonp");
 
   

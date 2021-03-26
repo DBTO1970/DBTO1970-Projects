@@ -60,14 +60,15 @@ $(document).ready(function(){
     makeDate(today);
     
   // Add google map and GeoJSON data
-  
-    
-
-  
-  
+    // see maps.js
+ //
+ 
   // Accordion function on accordion div
     
     $("#accordion").accordion({
+      
+    });
+    $("#accordionData").accordion({
       
     });
   
@@ -77,12 +78,20 @@ $(document).ready(function(){
     var active = $("#accordion").accordion("option", "active");
     
     // Setter
-    $("#accordion").accordion("option", "collapsible", true);
-    $("#accordion").accordion("option", "active", false);
+    $("#accordionData").accordion("option", "collapsible", true);
+    $("#accordionData").accordion("option", "active", false);
+
+     // Getter
+     var collapsible = $("#accordionData").accordion("option", "collapsible");
+     var active = $("#accordionData").accordion("option", "active");
+     
+     // Setter
+     $("#accordion").accordion("option", "collapsible", true);
+     $("#accordion").accordion("option", "active", false);
 
 // Vaccine Site Data
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_Vaccination_Locations/FeatureServer/4/query?where=1%3D1&outFields=*&outSR=4326&f=json",
-    "features:attributes", 
+    $.getJSON("https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson",
+    "features:", 
         function(data) {
             
             $.each(data.features, function() {
@@ -92,22 +101,33 @@ $(document).ready(function(){
                // iterate over json data and pull required records
                 var nothingArr = [undefined,"",null];
                 
+                
                 if (nothingArr.indexOf(value.name) !== -1 && nothingArr.indexOf(value.website_url) !== -1) {
                     
                     } else {
+                        
+                        
                         $("#vaccine-sites-list").append(
                             "<div class='ui-widget-content'><br />Name: " + value.name + "<br />" +
                             "Address: " + value.fulladdr + "<br />" + "Type: " + value.site_type + "<br />" +
                             "Scheduling Website: <a href='" + value.schedule_url + "' target='_blank'>" + value.schedule_url + "</a><br />"+
                             "Main Website: <a href='" + value.website_url + "' target='_blank'>" + value.website_url + "</a><br /><hr/></div>");
-                    }
+                            
+                        } 
+                       
+                    
+                            
+
                             });
                         
                         });
+
+                        
+                        
             }, "jsonp");
           
     // get vaccination totals
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=OBJECTID,CumulativeTotalVaccinated,CumulativeTotalVaccinatedDate&outSR=4326&f=json",
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MD_COVID19_TotalVaccinationsStatewideFirstandSecondDose/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", function(data) {
         let todayTotalArr = data.features;
         let indexPoint = todayTotalArr.length - 1;
@@ -134,16 +154,16 @@ $(document).ready(function(){
     }, "jsonp");
    
     // Get infection totals
-    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_TotalCasesStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    $.getJSON("https://services.arcgis.com/njFNhDsUCentVYJW/arcgis/rest/services/MDCOVID19_CasesPer100KpopulationStatewide/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
     "features:attributes", function(data) {
         let todayTotalCasesArr = data.features;
         let indexPointCases = todayTotalCasesArr.length - 1;
         let prevIndexPointCases = todayTotalCasesArr.length -2;
         let newCasesData = todayTotalCasesArr[indexPointCases];
         let prevNewCasesData = todayTotalCasesArr[prevIndexPointCases];
-        let newCasesDataToday = newCasesData.attributes.Count_;
-        let prevCasesToday = prevNewCasesData.attributes.Count_;
-        let infectionRate = (newCasesDataToday / 6060000) * 100;
+        let newCasesDataToday = (newCasesData.attributes.Statewide);
+        let prevCasesToday = (prevNewCasesData.attributes.Statewide);
+        //let infectionRate = (newCasesDataToday / 6060000) * 100;
         if (prevCasesToday < newCasesDataToday) {
             $('#current-caseTotal').addClass('infInc');
 
@@ -154,7 +174,7 @@ $(document).ready(function(){
         } else {
             $('#current-caseTotal').addClass('infStable');
         }
-        $("#current-caseTotal").html(newCasesDataToday.toLocaleString('en-US') + "  (" + infectionRate.toLocaleString('en-US') + "%)");
+        $("#current-caseTotal").html(newCasesDataToday.toLocaleString('en-US'));
     }, "jsonp");
    
     

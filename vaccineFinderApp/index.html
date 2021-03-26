@@ -2,6 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+
     <title>Maryland COVID-19 Vaccine Finder</title>
     <!-- add url for favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico">
@@ -10,14 +15,15 @@
     <!-- HTML5 shim/shiv for HTML5 section element backward compatibility. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     
-    <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
+    <!-- jQuery library reference. Latest is always referenced from jQuery's CDN.-->
     <script src="jquery.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     
     <!-- jQuery UI JavaScript library reference. -->
     <script src="jquery-ui.min.js"></script>
-   
+   <!-- Bootstrap stylesheet CDN 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">-->
     <!-- Normal style sheet used for layout and general formatting. -->
     <link href="main.css" rel="stylesheet">
     <!-- jQuery UI style sheet reference.  -->
@@ -25,55 +31,89 @@
     <link href="jquery-ui.theme.min.css" rel="stylesheet">
     <link href="jquery-ui.structure.min.css" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    
 </head>
 <body>
     <!-- Content Area -->
     <main>
         <div class="ui-widget" id="dashboardHeader">
-            <h2 class="ui-widget-header">COVID-19 in Maryland</h2>
+            <h1 class="ui-widget-header">COVID-19 in Maryland</h1>
            <!-- Get Current Date -->
             <h3 id="date-time" class="ui-widget"></h3>
-            <!-- current infections statewide -->
-            <p class="ui-widget">COVID-19 Vaccinations administered in Maryland: <span id="current-vacTotal" style="font-weight: 700;"></span><span style="color: red">*</span></p>
-            
-            <p class="ui-widget">COVID-19 cases in Maryland: <span id="current-caseTotal" style="font-weight: 700;"></span><span id="infChange"></span><span style="color: red">*</span></p>
-            <p style="color: red; font-size: x-small;"><a style="color: red; font-size: x-small;" href="https://covidlink.maryland.gov/content/vaccine/" target="_blank">*Updated via Maryland.gov COVIDLink</a></p>
             <!-- current vaccination phase for state -->
-            <h6 class="ui-widget">Current Vaccination Phase: <span  id="current-phase"><a href="https://covidlink.maryland.gov/content/wp-content/uploads/2021/03/covidLINK_VaxDistribution_PDF_web_508.pdf" target="_blank">1C</a></span></h6><br />
-        </div>
-    <!-- span to place data and map elements -->
-       
-      
- 
-            <div id="accordion" class="ui-accordion" width="80%" height="500px">
-                <h3 class="ui-accordion-header">Maryland COVID-19 Vaccination Clinics</h3>
-                <div class="ui-accordion-content" height="500px">
-                    <!--<h4 class="ui-widget-header">Map of Maryland State Vaccination Locations</h4><br />-->
-                        
+            <h6 class="ui-widget">Vaccination Phase: <span  id="current-phase"><a 
+                href="https://covidlink.maryland.gov/content/wp-content/uploads/2021/03/covidLINK_VaxDistribution_PDF_web_508.pdf" 
+                target="_blank">2A</a></span></h6>
+                <p style="font-size: smaller; color: red; font-weight: 800;"></p>
+        </div><br />
+        <div class="ui-widget" id="mainContent">
+            <h3 class="ui-widget-header">COVID-19 Vaccine Administration and Case Data</h3>
+            <div id="accordionData" class="ui-accordion" width="80%">
+                <!-- current infections statewide -->
+                    <h3 class="ui-accordion-header">Vaccines Given: 
+                        <span id="current-vacTotal" style="font-weight: 700;"></span>
+                        <span style="color: red">*</span>
+                    </h3>
+                    <div class="ui-accordion-content, dataDef">
+                        <p>This number represents the total number of vaccinations administered in Maryland.  It includes First Dose, Second Dose, Fully Vaccinated totals for the State of Maryland. The Percent ( % ) is based on a total state population of 6.06 Million people.</p><br />
+                        <p>A&nbsp;<span style="color: white; background-color: green; border-radius:5px; padding: .04em;">&nbsp;Green&nbsp;</span>&nbsp;indicator shows an increase in doses administered from the previous day's data.  A&nbsp;<span style="color: white; background-color: red; border-radius:5px; padding: .04em;">&nbsp;Red&nbsp;</span>
+                              &nbsp;indicator shows a decrease, while a&nbsp;<span style="color: black; background-color: YELLOW; 
+                              border-radius:5px; padding: .04em;">&nbsp;Yellow&nbsp;</span>&nbsp;indicator shows no change from the previous data set.</p>
+                        <br />
+                        <p style="color: red; 
+                        font-size: x-small;"><a style="color: red; font-size: x-small;" 
+                        href="https://coronavirus.maryland.gov/datasets/md-covid19-totalvaccinationsstatewidefirstandseconddose" target="_blank">*Updated via Maryland.gov COVIDLink</a>
+                        </p>    
                     
-                               
-                    <!--<div class="row"><input class="form-control" id="searchSites" type="text" placeholder="Search locations"/></div><br />
-                    <div id="map"></div><br />-->
-                    <h3 class="ui-widget-header">Vaccination Sites in Maryland: </h3>
-                    <br />
-                    <div id="vaccine-sites-list"></div>
+                    </div>
+                    <h3 class="ui-accordion-header">Cases:&nbsp;<span id="current-caseTotal" style="font-weight: 700;"></span><span id="infChange"></span><span style="color: red; 
+                        font-size: x-small;">*(State-wide, per 100K people)</span></h3>
+                    <div class="ui-accordion-content, dataDef">
+                        <p>This number represents the total number of current COVID-19 cases in Maryland.  The number is represented as a 7-day average per 100K.</p><br />
+                        
+                        <p>A&nbsp;<span style="color: white; background-color: green; border-radius:5px; padding: .04em;">&nbsp;Green&nbsp;</span>&nbsp;
+                            indicator shows a decrease in total current cases, state-wide, from the previous day's data.  A 
+                            &nbsp;<span style="color: white; background-color: red; border-radius:5px; padding: .04em;">&nbsp;Red&nbsp;</span>&nbsp;
+                            indicator shows an increase, while a&nbsp;<span style="color: black; 
+                            background-color: YELLOW; border-radius:5px; padding: .04em;">&nbsp;Yellow&nbsp;</span>&nbsp;
+                            indicator shows no change from the previous data set.
+                        </p>
+                        <br />
+                        <p style="color: red; font-size: x-small;"><a style="color: red; font-size: x-small;" href="https://coronavirus.maryland.gov/datasets/mdcovid19-casesper100kpopulationstatewide" target="_blank">*Updated via Maryland.gov COVIDLink</a></p>    
+                    </div>
+                    <h3 class="ui-accordion-header">Map View Coming Soon</h3>
+                    <div class="ui-accordion-content, dataMap">
+                      
+                        <div class="row"><input class="form-control" id="searchData" type="text" placeholder="Coming Soon..."/>
+                        </div><br />
+                        <div id="map2"></div><br />
+                        
+                    </div>
+                </div><br />
+
+    <!-- span to place data and map elements -->
+        <h3 class="ui-widget-header">Vaccination Sites and Resources</h3>
        
+            <div id="accordion" class="ui-accordion" width="80%" height="auto">
+                <h3 class="ui-accordion-header">List View</h3>
+                <div class="ui-accordion-content, dataList">
+                    
+                    <h3><a href="https://coronavirus.maryland.gov/datasets/all-maryland-vaccination-sites-1?geometry=-85.320%2C37.447%2C-69.203%2C40.437" target="_blank">Maryland.gov MDCOVID19 Data </a></h3>
+                    <div id="vaccine-sites-list"></div>
+                </div>
+                <h3 class="ui-accordion-header">Map View</h3>
+                <div class="ui-accordion-content, dataMap">
+
+                    <div class="row"><input class="form-control" id="searchSites" type="text" placeholder="Coming Soon..."/></div><br />
+                    <div id="map"></div>
                 </div>
 
-                <!--<h3 class="ui-accordion-header">Vaccines Administered in Maryland</h3>
-                <div class="ui-accordion-content">
-                    <h4 class="ui-widget-header">Map of Maryland Showing Vaccination rates</h4><br />-->
-                        
-                    
-                               
-                    <!--<div class="row"><input class="form-control" id="searchData" type="text" placeholder="Search area data"/></div><br />
-                    <div id="map2"></div><br />-->
-                    
-                </div>
+               
             
             </div>
+
         
+        </div>
         <br />
         <div id="dialog" class="ui-widget" name="disclaimer" title="Disclaimer">
             <p class="ui-widget-content">All information is provided as a free service to the community.<br />
@@ -86,6 +126,11 @@
     <!-- app.js javascript link within this directory -->
     <script src="app.js"></script>
     
+    <!-- script for bootstrap js 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" 
+    crossorigin="anonymous"></script>-->
+
     <!-- script and url for google maps API -->
     <script src="maps.js"></script>
     
