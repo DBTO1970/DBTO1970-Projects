@@ -86,7 +86,8 @@ $(document).ready(function(){
      var active = $("#accordionData").accordion("option", "active");
      
      // Setter
-     $("#accordion").accordion("option", "collapsible", true, "option", "active", false);
+     $("#accordion").accordion("option", "collapsible", true);
+     $("#accordion").accordion("option", "active", false);
   
 
 // Vaccine Site Data
