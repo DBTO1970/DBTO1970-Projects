@@ -53,7 +53,7 @@
             new google.maps.Marker({
                 position: latLng,
                 map: map,
-                infoWindow: infoWindow,
+                infoWindow: markerInfo,
                 marker: markerInfo,
                 
             });

@@ -4,20 +4,20 @@
 }
 
 footer  {
-    font-size: .5em;
+    font-size: .5rem;
     text-align: center;
 }
 
 main{
-    padding: 10px;
+    padding: .75rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top:10px;
+    margin-top:.75rem;
     width: 85%;
 }      
 
 #dashboardHeader  {
-  line-height: 1.5em
+  line-height: 1.5rem
 }
 
 .dataMap, #map, #map2 {
@@ -32,60 +32,60 @@ main{
     height: 200px;
 }
 #current-phase  {
-    font-size: 1.25em;
+    font-size: 1.25rem;
     font-weight: 900;
 }
 
 .increase   {
     background-color: green;
     color: white;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .decrease   {
     background-color: red;
     color: white;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .stable   {
     background-color: yellow;
     color: black;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .infInc   {
     background-color: red;
     color: white;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .infDec   {
     background-color: green;
     color: white;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .infStable   {
     background-color: yellow;
     color: black;
-    padding: 5px;
+    padding: .5rem;
     border-radius: 5px;
-    margin: 5px;
+    margin: .5rem;
 }
 
 .ui-widget-header   {
-    padding: 5px;
+    padding: .5rem;
     text-align: center;
 }
 

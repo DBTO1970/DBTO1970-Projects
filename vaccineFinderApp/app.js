@@ -86,8 +86,8 @@ $(document).ready(function(){
      var active = $("#accordionData").accordion("option", "active");
      
      // Setter
-     $("#accordion").accordion("option", "collapsible", true);
-     $("#accordion").accordion("option", "active", false);
+     $("#accordion").accordion("option", "collapsible", true, "option", "active", false);
+  
 
 // Vaccine Site Data
     $.getJSON("https://opendata.arcgis.com/datasets/d677f143334648a1a40b84d94df8e134_4.geojson",
